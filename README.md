@@ -21,7 +21,7 @@ If you have more than 10k matches, just wait a day after the first run and then 
 ### How
 
 This tool essentially queries the same GameCoordinator API endpoint as the Battle Stats tab. Accordingly, the received match data includes rank change information, which can be used to reconstruct the mmr history.
-(Like the Battle Stats, this data can only be requested for your own account, which is why this tool requires a login.)
+(Like the Battle Stats, this data can only be requested for your own account.)
 
 If you’re wondering why sites like opendota or stratz can’t do this, it’s because they only use the official Steam APIs,
 not the GameCoordinator API, which is undocumented, rate-limited and can only be accessed while programmatically simulating a Dota2 session.
