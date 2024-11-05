@@ -5,7 +5,7 @@ Uses the GameCoordinator API to fetch and save an account's match history and vi
 
 ## Usage
 
-Extract the zip contents into a folder. Start ``ShowMMR.exe``, either by double-clicking ShowMMR.exe or alternatively via the CLI (type "cmd" into explorer adress bar, type ".\ShowMMR.exe" and press enter).
+Extract [the zip](https://github.com/Lypheo/ShowMMR/releases/latest/download/ShowMMR.zip) contents into a folder. Start ``ShowMMR.exe``, either by double-clicking ShowMMR.exe or alternatively via the CLI (type "cmd" into explorer adress bar, type ".\ShowMMR.exe" and press enter).
 Login with your credentials and choose the number of fetches to fetch. The tool will fetch your match history at a pace of 1 page (20 matches) per second.
 Once it’s done, it will save the retrieved history to disk as a .csv file (keys: ``Date,Unix time,MatchID,Start MMR,Rank Change``) and plot an interactive MMR graph.
 
