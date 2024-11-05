@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<Product>ShowMMR</Product>
+		<Description>Export DOTA ranked recent matches via SteamKit2</Description>
+		<Company>AveYo, SteamRE</Company>
+		<Copyright>© AveYo 2023, Copyright © Pavel Djundik 2023</Copyright>
+		<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+        <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+		<PackageId>ShowMMR</PackageId>
+		<AssemblyName>ShowMMR</AssemblyName>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net8.0-windows</TargetFramework>
+		<UseWindowsForms>true</UseWindowsForms>
+	</PropertyGroup>
+  	<ItemGroup>
+		<Compile Include="Program.cs" />
+  	</ItemGroup>
+  	<ItemGroup>
+  	  <PackageReference Include="ScottPlot.WinForms" Version="5.0.39" />
+  	  <PackageReference Include="System.Resources.Extensions" Version="8.0.0" />
+  	</ItemGroup>
+  	<ItemGroup>
+  	  <ProjectReference Include="SteamKitPR\SteamKit2\SteamKit2\SteamKit2.csproj" />
+  	</ItemGroup>
+</Project>

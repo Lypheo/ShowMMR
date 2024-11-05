@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35027.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShowMMR_net7", "ShowMMR_net7.csproj", "{63F0F78F-2194-4D3B-8EF5-0B1D466D4782}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{63F0F78F-2194-4D3B-8EF5-0B1D466D4782}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63F0F78F-2194-4D3B-8EF5-0B1D466D4782}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63F0F78F-2194-4D3B-8EF5-0B1D466D4782}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63F0F78F-2194-4D3B-8EF5-0B1D466D4782}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {81B1377B-0669-4C00-A3B0-B38E73D014F8}
+	EndGlobalSection
+EndGlobal
