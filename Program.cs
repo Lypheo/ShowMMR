@@ -153,6 +153,10 @@ class Program {
 
         ScottPlot.Plot myPlot = new();
 
+        int dd_cnt = 0, dd_won = 0;
+        int mmr_inflated = 0;
+        uint crownfall_start = ConvertToUnixTime(new DateTime(2024, 4, 19, 0, 0, 0, DateTimeKind.Utc));
+
         var mmr_history = new System.Text.StringBuilder();
         mmr_history.AppendFormat("Date,Unix time,MatchID,Start MMR,Rank Change\r\n");
 
@@ -160,7 +164,17 @@ class Program {
             var m = Matches[x]; /// CMsgDOTAMatch
             mmr_history.AppendFormat("{0},{1},{2},{3},{4}\r\n",
             FormatTime(m.start_time), m.start_time, m.match_id, m.previous_rank, m.rank_change);
+
+            if (Math.Abs(m.rank_change) > 40 && m.start_time > crownfall_start) {
+                dd_cnt++;
+                if (m.rank_change > 0) dd_won++;
+                mmr_inflated += m.rank_change/2;
+            }
         }
+
+        Console.WriteLine("Double down accuracy: {0} / {1} = {2}% (estimated using matches where |rank change| > 40)", dd_won, dd_cnt, 100 * dd_won / dd_cnt);
+        Console.WriteLine("MMR inflated by: {0} (approximate lower bound)", mmr_inflated);
+
         DateTime[] dataX = Matches.Select(m => new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddSeconds(m.start_time).ToLocalTime()).ToArray();
         uint[] dataY = Matches.Select(m => m.previous_rank).ToArray();
 
@@ -174,6 +188,9 @@ class Program {
         ScottPlot.WinForms.FormsPlotViewer.Launch(myPlot);
 
         return 0;
+    }
+    static uint ConvertToUnixTime(DateTime dateTime) {
+        return (uint)(dateTime.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
     }
 
     static String FormatTime(uint unixTime) {
