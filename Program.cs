@@ -94,9 +94,9 @@ class Program {
         // Parsing done. Now we can start the Steam connection.
         // ----------------------------------------------------------------------------------------------
 
-        if (matches_count > 0) {
+        if (matches_count != 0) {
             matches_requested = 20;
-            matches_remaining = matches_count;
+            matches_remaining = matches_count > 0 ? matches_count : 99999999;
             account = 0;
 
             var cellid = 0u;
@@ -352,12 +352,15 @@ class Program {
         Console.WriteLine("GC is welcoming us. Version: {0}", msg.Body.version);
         /// at this point, the GC is now ready to accept messages from us
 
-        Console.WriteLine("Requesting {0} recent matches history", matches_count);
+        if (matches_count > 0)
+            Console.WriteLine("Requesting {0} recent matches", matches_count);
+        else
+            Console.WriteLine("Requesting matches until last stored match is encountered", matches_count);
         fetchMatches();
     }
 
     static void fetchMatches() {
-        matches_requested = Math.Min(20, matches_count);
+        matches_requested = 20;
         matches_remaining -= matches_requested;
         var requestHistory = new ClientGCMsgProtobuf<CMsgDOTAGetPlayerMatchHistory>(
             (uint)EDOTAGCMsg.k_EMsgDOTAGetPlayerMatchHistory);
@@ -380,6 +383,8 @@ class Program {
                 !(match.start_time < partyMMR_removal && !match.solo_rank)) {
                 if (match.match_id == latest_saved_mid) {
                     matches_start_at_id = Matches.Last().match_id;
+                    if (matches_count < 0)
+                        matches_remaining = 0;
                     break;
                 }
                 Matches.Add(match);
